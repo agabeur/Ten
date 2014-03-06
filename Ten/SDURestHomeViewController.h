@@ -1,5 +1,5 @@
 //
-//  SDUViewController.h
+//  SDURestHomeViewController.h
 //  Ten
 //
 //  Created by Stanislas Duthoit on 05/03/2014.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SDUViewController : UIViewController
+@interface SDURestHomeViewController : UIViewController
 
 @end
