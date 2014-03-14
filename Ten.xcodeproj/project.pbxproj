@@ -28,6 +28,17 @@
 		CD9DB46F18C8178B00C56BD8 /* SDURestDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9DB46E18C8178B00C56BD8 /* SDURestDetailViewController.m */; };
 		CD9DB47218C819BD00C56BD8 /* SDURest.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9DB47118C819BD00C56BD8 /* SDURest.m */; };
 		CD9DB4C218CD54BC00C56BD8 /* SDURegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9DB4C118CD54BC00C56BD8 /* SDURegisterViewController.m */; };
+		CD9DB4DB18D2909B00C56BD8 /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9DB4D018D2909B00C56BD8 /* RECommonFunctions.m */; };
+		CD9DB4DC18D2909B00C56BD8 /* REFrostedContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9DB4D218D2909B00C56BD8 /* REFrostedContainerViewController.m */; };
+		CD9DB4DD18D2909B00C56BD8 /* REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9DB4D418D2909B00C56BD8 /* REFrostedViewController.m */; };
+		CD9DB4DE18D2909B00C56BD8 /* UIImage+REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9DB4D618D2909B00C56BD8 /* UIImage+REFrostedViewController.m */; };
+		CD9DB4DF18D2909B00C56BD8 /* UIView+REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9DB4D818D2909B00C56BD8 /* UIView+REFrostedViewController.m */; };
+		CD9DB4E018D2909B00C56BD8 /* UIViewController+REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9DB4DA18D2909B00C56BD8 /* UIViewController+REFrostedViewController.m */; };
+		CD9DB4E418D2913400C56BD8 /* SDURootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9DB4E318D2913400C56BD8 /* SDURootViewController.m */; };
+		CD9DB4EA18D2930900C56BD8 /* SDUMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9DB4E918D2930900C56BD8 /* SDUMenuViewController.m */; };
+		CD9DB4ED18D2933900C56BD8 /* SDUHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9DB4EC18D2933900C56BD8 /* SDUHomeViewController.m */; };
+		CD9DB4F018D2934700C56BD8 /* SDUSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9DB4EF18D2934700C56BD8 /* SDUSecondViewController.m */; };
+		CD9DB4F318D2936C00C56BD8 /* SDUNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9DB4F218D2936C00C56BD8 /* SDUNavigationController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +83,28 @@
 		CD9DB47118C819BD00C56BD8 /* SDURest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDURest.m; sourceTree = "<group>"; };
 		CD9DB4C018CD54BC00C56BD8 /* SDURegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDURegisterViewController.h; sourceTree = "<group>"; };
 		CD9DB4C118CD54BC00C56BD8 /* SDURegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDURegisterViewController.m; sourceTree = "<group>"; };
+		CD9DB4CF18D2909B00C56BD8 /* RECommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECommonFunctions.h; sourceTree = "<group>"; };
+		CD9DB4D018D2909B00C56BD8 /* RECommonFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RECommonFunctions.m; sourceTree = "<group>"; };
+		CD9DB4D118D2909B00C56BD8 /* REFrostedContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REFrostedContainerViewController.h; sourceTree = "<group>"; };
+		CD9DB4D218D2909B00C56BD8 /* REFrostedContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REFrostedContainerViewController.m; sourceTree = "<group>"; };
+		CD9DB4D318D2909B00C56BD8 /* REFrostedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REFrostedViewController.h; sourceTree = "<group>"; };
+		CD9DB4D418D2909B00C56BD8 /* REFrostedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REFrostedViewController.m; sourceTree = "<group>"; };
+		CD9DB4D518D2909B00C56BD8 /* UIImage+REFrostedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+REFrostedViewController.h"; sourceTree = "<group>"; };
+		CD9DB4D618D2909B00C56BD8 /* UIImage+REFrostedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+REFrostedViewController.m"; sourceTree = "<group>"; };
+		CD9DB4D718D2909B00C56BD8 /* UIView+REFrostedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+REFrostedViewController.h"; sourceTree = "<group>"; };
+		CD9DB4D818D2909B00C56BD8 /* UIView+REFrostedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+REFrostedViewController.m"; sourceTree = "<group>"; };
+		CD9DB4D918D2909B00C56BD8 /* UIViewController+REFrostedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+REFrostedViewController.h"; sourceTree = "<group>"; };
+		CD9DB4DA18D2909B00C56BD8 /* UIViewController+REFrostedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+REFrostedViewController.m"; sourceTree = "<group>"; };
+		CD9DB4E218D2913400C56BD8 /* SDURootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDURootViewController.h; sourceTree = "<group>"; };
+		CD9DB4E318D2913400C56BD8 /* SDURootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDURootViewController.m; sourceTree = "<group>"; };
+		CD9DB4E818D2930900C56BD8 /* SDUMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDUMenuViewController.h; sourceTree = "<group>"; };
+		CD9DB4E918D2930900C56BD8 /* SDUMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDUMenuViewController.m; sourceTree = "<group>"; };
+		CD9DB4EB18D2933900C56BD8 /* SDUHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDUHomeViewController.h; sourceTree = "<group>"; };
+		CD9DB4EC18D2933900C56BD8 /* SDUHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDUHomeViewController.m; sourceTree = "<group>"; };
+		CD9DB4EE18D2934700C56BD8 /* SDUSecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDUSecondViewController.h; sourceTree = "<group>"; };
+		CD9DB4EF18D2934700C56BD8 /* SDUSecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDUSecondViewController.m; sourceTree = "<group>"; };
+		CD9DB4F118D2936C00C56BD8 /* SDUNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDUNavigationController.h; sourceTree = "<group>"; };
+		CD9DB4F218D2936C00C56BD8 /* SDUNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDUNavigationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,11 +168,13 @@
 		CD9DB43118C816BB00C56BD8 /* Ten */ = {
 			isa = PBXGroup;
 			children = (
+				CD9DB43D18C816BB00C56BD8 /* Main.storyboard */,
+				CD9DB4E118D290B600C56BD8 /* SlideOutViewControllers */,
+				CD9DB4CE18D2909B00C56BD8 /* REFrostedViewController */,
 				CD9DB4C518D12B5F00C56BD8 /* Home */,
 				CD9DB4C318D12A9200C56BD8 /* RestView */,
 				CD9DB43A18C816BB00C56BD8 /* SDUAppDelegate.h */,
 				CD9DB43B18C816BB00C56BD8 /* SDUAppDelegate.m */,
-				CD9DB43D18C816BB00C56BD8 /* Main.storyboard */,
 				CD9DB47018C819BD00C56BD8 /* SDURest.h */,
 				CD9DB47118C819BD00C56BD8 /* SDURest.m */,
 				CD9DB44318C816BB00C56BD8 /* Images.xcassets */,
@@ -199,6 +234,42 @@
 				CD9DB46518C8171A00C56BD8 /* SDURestHomeViewController.m */,
 			);
 			name = Home;
+			sourceTree = "<group>";
+		};
+		CD9DB4CE18D2909B00C56BD8 /* REFrostedViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CD9DB4CF18D2909B00C56BD8 /* RECommonFunctions.h */,
+				CD9DB4D018D2909B00C56BD8 /* RECommonFunctions.m */,
+				CD9DB4D118D2909B00C56BD8 /* REFrostedContainerViewController.h */,
+				CD9DB4D218D2909B00C56BD8 /* REFrostedContainerViewController.m */,
+				CD9DB4D318D2909B00C56BD8 /* REFrostedViewController.h */,
+				CD9DB4D418D2909B00C56BD8 /* REFrostedViewController.m */,
+				CD9DB4D518D2909B00C56BD8 /* UIImage+REFrostedViewController.h */,
+				CD9DB4D618D2909B00C56BD8 /* UIImage+REFrostedViewController.m */,
+				CD9DB4D718D2909B00C56BD8 /* UIView+REFrostedViewController.h */,
+				CD9DB4D818D2909B00C56BD8 /* UIView+REFrostedViewController.m */,
+				CD9DB4D918D2909B00C56BD8 /* UIViewController+REFrostedViewController.h */,
+				CD9DB4DA18D2909B00C56BD8 /* UIViewController+REFrostedViewController.m */,
+			);
+			path = REFrostedViewController;
+			sourceTree = "<group>";
+		};
+		CD9DB4E118D290B600C56BD8 /* SlideOutViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CD9DB4E218D2913400C56BD8 /* SDURootViewController.h */,
+				CD9DB4E318D2913400C56BD8 /* SDURootViewController.m */,
+				CD9DB4EB18D2933900C56BD8 /* SDUHomeViewController.h */,
+				CD9DB4EC18D2933900C56BD8 /* SDUHomeViewController.m */,
+				CD9DB4E818D2930900C56BD8 /* SDUMenuViewController.h */,
+				CD9DB4E918D2930900C56BD8 /* SDUMenuViewController.m */,
+				CD9DB4F118D2936C00C56BD8 /* SDUNavigationController.h */,
+				CD9DB4F218D2936C00C56BD8 /* SDUNavigationController.m */,
+				CD9DB4EE18D2934700C56BD8 /* SDUSecondViewController.h */,
+				CD9DB4EF18D2934700C56BD8 /* SDUSecondViewController.m */,
+			);
+			name = SlideOutViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -300,12 +371,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD9DB46618C8171A00C56BD8 /* SDURestHomeViewController.m in Sources */,
+				CD9DB4DB18D2909B00C56BD8 /* RECommonFunctions.m in Sources */,
+				CD9DB4F318D2936C00C56BD8 /* SDUNavigationController.m in Sources */,
+				CD9DB4ED18D2933900C56BD8 /* SDUHomeViewController.m in Sources */,
 				CD9DB46C18C8176000C56BD8 /* SDURestListAnnotation.m in Sources */,
 				CD9DB46F18C8178B00C56BD8 /* SDURestDetailViewController.m in Sources */,
+				CD9DB4EA18D2930900C56BD8 /* SDUMenuViewController.m in Sources */,
 				CD9DB46918C8173C00C56BD8 /* SDURestListViewController.m in Sources */,
+				CD9DB4F018D2934700C56BD8 /* SDUSecondViewController.m in Sources */,
+				CD9DB4DF18D2909B00C56BD8 /* UIView+REFrostedViewController.m in Sources */,
+				CD9DB4E418D2913400C56BD8 /* SDURootViewController.m in Sources */,
+				CD9DB4DD18D2909B00C56BD8 /* REFrostedViewController.m in Sources */,
+				CD9DB4DC18D2909B00C56BD8 /* REFrostedContainerViewController.m in Sources */,
+				CD9DB4DE18D2909B00C56BD8 /* UIImage+REFrostedViewController.m in Sources */,
 				CD9DB47218C819BD00C56BD8 /* SDURest.m in Sources */,
 				CD9DB43818C816BB00C56BD8 /* main.m in Sources */,
 				CD9DB4C218CD54BC00C56BD8 /* SDURegisterViewController.m in Sources */,
+				CD9DB4E018D2909B00C56BD8 /* UIViewController+REFrostedViewController.m in Sources */,
 				CD9DB43C18C816BB00C56BD8 /* SDUAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
