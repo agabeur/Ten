@@ -1,19 +1,19 @@
 //
-//  SDURestHomeViewController.m
+//  SDUBarHomeViewController.m
 //  Ten
 //
-//  Created by Stanislas Duthoit on 05/03/2014.
+//  Created by Stanislas Duthoit on 16/03/2014.
 //  Copyright (c) 2014 Stanislas Duthoit. All rights reserved.
 //
 
-#import "SDURestHomeViewController.h"
-#import "SDURestMapListViewController.h"
+#import "SDUBarHomeViewController.h"
+#import "SDUBarMapListViewController.h"
 
-@interface SDURestHomeViewController ()
+@interface SDUBarHomeViewController ()
 
 @end
 
-@implementation SDURestHomeViewController
+@implementation SDUBarHomeViewController
 
 -(void)showMenu:(id)sender
 {
@@ -51,8 +51,8 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     UIButton *clickedMood = (UIButton *)sender;
-    NSString *restListMood = clickedMood.currentTitle;
-    SDURestMapListViewController *restListViewController = segue.destinationViewController;
-    restListViewController.mood = restListMood;
+    NSString *barListMood = clickedMood.currentTitle;
+    SDUBarMapListViewController *barListViewController = segue.destinationViewController;
+    barListViewController.mood = barListMood;
 }
 @end

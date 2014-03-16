@@ -6,15 +6,15 @@
 //  Copyright (c) 2014 Stanislas Duthoit. All rights reserved.
 //
 
-#import "SDURestListViewController.h"
+#import "SDURestMapListViewController.h"
 #import "SDURest.h"
 #import "SDURestDetailViewController.h"
 
-@interface SDURestListViewController ()
+@interface SDURestMapListViewController ()
 
 @end
 
-@implementation SDURestListViewController
+@implementation SDURestMapListViewController
 
 @synthesize restaurants = _restaurants;
 @synthesize annotations = _annotations;
