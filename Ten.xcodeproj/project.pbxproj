@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD84B58B191EDBAB003C9705 /* SDUMyFriendsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD84B58A191EDBAB003C9705 /* SDUMyFriendsTableViewController.m */; };
 		CD9DB42C18C816BB00C56BD8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD9DB42B18C816BB00C56BD8 /* Foundation.framework */; };
 		CD9DB42E18C816BB00C56BD8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD9DB42D18C816BB00C56BD8 /* CoreGraphics.framework */; };
 		CD9DB43018C816BB00C56BD8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD9DB42F18C816BB00C56BD8 /* UIKit.framework */; };
@@ -36,14 +37,15 @@
 		CD9DB4E018D2909B00C56BD8 /* UIViewController+REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9DB4DA18D2909B00C56BD8 /* UIViewController+REFrostedViewController.m */; };
 		CD9DB4E418D2913400C56BD8 /* SDURootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9DB4E318D2913400C56BD8 /* SDURootViewController.m */; };
 		CD9DB4EA18D2930900C56BD8 /* SDUMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9DB4E918D2930900C56BD8 /* SDUMenuViewController.m */; };
-		CD9DB4ED18D2933900C56BD8 /* SDUHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9DB4EC18D2933900C56BD8 /* SDUHomeViewController.m */; };
-		CD9DB4F018D2934700C56BD8 /* SDUSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9DB4EF18D2934700C56BD8 /* SDUSecondViewController.m */; };
 		CD9DB4F318D2936C00C56BD8 /* SDUNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9DB4F218D2936C00C56BD8 /* SDUNavigationController.m */; };
 		CD9DB50418D6304C00C56BD8 /* SDUBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9DB50318D6304C00C56BD8 /* SDUBar.m */; };
 		CD9DB50718D6323100C56BD8 /* SDUBarHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9DB50618D6323100C56BD8 /* SDUBarHomeViewController.m */; };
 		CD9DB50A18D632EB00C56BD8 /* SDUBarMapListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9DB50918D632EB00C56BD8 /* SDUBarMapListViewController.m */; };
 		CD9DB50D18D634EA00C56BD8 /* SDUBarListAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9DB50C18D634EA00C56BD8 /* SDUBarListAnnotation.m */; };
 		CD9DB51018D635E900C56BD8 /* SDUBarDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9DB50F18D635E900C56BD8 /* SDUBarDetailViewController.m */; };
+		CD9DB51418D657DF00C56BD8 /* SDUMyListsHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9DB51318D657DF00C56BD8 /* SDUMyListsHomeViewController.m */; };
+		CD9DB51F18D7E87B00C56BD8 /* SDUMyRestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9DB51E18D7E87B00C56BD8 /* SDUMyRestViewController.m */; };
+		CDC84F5818D7F97300FAB326 /* SDUMyRestDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC84F5718D7F97300FAB326 /* SDUMyRestDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CD84B589191EDBAB003C9705 /* SDUMyFriendsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDUMyFriendsTableViewController.h; sourceTree = "<group>"; };
+		CD84B58A191EDBAB003C9705 /* SDUMyFriendsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDUMyFriendsTableViewController.m; sourceTree = "<group>"; };
 		CD9DB42818C816BB00C56BD8 /* Ten.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ten.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD9DB42B18C816BB00C56BD8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CD9DB42D18C816BB00C56BD8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -104,10 +108,6 @@
 		CD9DB4E318D2913400C56BD8 /* SDURootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDURootViewController.m; sourceTree = "<group>"; };
 		CD9DB4E818D2930900C56BD8 /* SDUMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDUMenuViewController.h; sourceTree = "<group>"; };
 		CD9DB4E918D2930900C56BD8 /* SDUMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDUMenuViewController.m; sourceTree = "<group>"; };
-		CD9DB4EB18D2933900C56BD8 /* SDUHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDUHomeViewController.h; sourceTree = "<group>"; };
-		CD9DB4EC18D2933900C56BD8 /* SDUHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDUHomeViewController.m; sourceTree = "<group>"; };
-		CD9DB4EE18D2934700C56BD8 /* SDUSecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDUSecondViewController.h; sourceTree = "<group>"; };
-		CD9DB4EF18D2934700C56BD8 /* SDUSecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDUSecondViewController.m; sourceTree = "<group>"; };
 		CD9DB4F118D2936C00C56BD8 /* SDUNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDUNavigationController.h; sourceTree = "<group>"; };
 		CD9DB4F218D2936C00C56BD8 /* SDUNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDUNavigationController.m; sourceTree = "<group>"; };
 		CD9DB50218D6304C00C56BD8 /* SDUBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDUBar.h; sourceTree = "<group>"; };
@@ -120,6 +120,12 @@
 		CD9DB50C18D634EA00C56BD8 /* SDUBarListAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDUBarListAnnotation.m; sourceTree = "<group>"; };
 		CD9DB50E18D635E900C56BD8 /* SDUBarDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDUBarDetailViewController.h; sourceTree = "<group>"; };
 		CD9DB50F18D635E900C56BD8 /* SDUBarDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDUBarDetailViewController.m; sourceTree = "<group>"; };
+		CD9DB51218D657DF00C56BD8 /* SDUMyListsHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDUMyListsHomeViewController.h; sourceTree = "<group>"; };
+		CD9DB51318D657DF00C56BD8 /* SDUMyListsHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDUMyListsHomeViewController.m; sourceTree = "<group>"; };
+		CD9DB51D18D7E87B00C56BD8 /* SDUMyRestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDUMyRestViewController.h; sourceTree = "<group>"; };
+		CD9DB51E18D7E87B00C56BD8 /* SDUMyRestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDUMyRestViewController.m; sourceTree = "<group>"; };
+		CDC84F5618D7F97300FAB326 /* SDUMyRestDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDUMyRestDetailViewController.h; sourceTree = "<group>"; };
+		CDC84F5718D7F97300FAB326 /* SDUMyRestDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDUMyRestDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,8 +192,10 @@
 				CD9DB43D18C816BB00C56BD8 /* Main.storyboard */,
 				CD9DB4E118D290B600C56BD8 /* SlideOutViewControllers */,
 				CD9DB4C518D12B5F00C56BD8 /* Home */,
-				CD9DB50118D6300F00C56BD8 /* BarView */,
 				CD9DB4C318D12A9200C56BD8 /* RestView */,
+				CD9DB50118D6300F00C56BD8 /* BarView */,
+				CD9DB51118D657AE00C56BD8 /* MyLists */,
+				CD9DB51518D68EC100C56BD8 /* Friends */,
 				CD9DB43A18C816BB00C56BD8 /* SDUAppDelegate.h */,
 				CD9DB43B18C816BB00C56BD8 /* SDUAppDelegate.m */,
 				CD9DB47018C819BD00C56BD8 /* SDURest.h */,
@@ -278,14 +286,10 @@
 			children = (
 				CD9DB4E218D2913400C56BD8 /* SDURootViewController.h */,
 				CD9DB4E318D2913400C56BD8 /* SDURootViewController.m */,
-				CD9DB4EB18D2933900C56BD8 /* SDUHomeViewController.h */,
-				CD9DB4EC18D2933900C56BD8 /* SDUHomeViewController.m */,
 				CD9DB4E818D2930900C56BD8 /* SDUMenuViewController.h */,
 				CD9DB4E918D2930900C56BD8 /* SDUMenuViewController.m */,
 				CD9DB4F118D2936C00C56BD8 /* SDUNavigationController.h */,
 				CD9DB4F218D2936C00C56BD8 /* SDUNavigationController.m */,
-				CD9DB4EE18D2934700C56BD8 /* SDUSecondViewController.h */,
-				CD9DB4EF18D2934700C56BD8 /* SDUSecondViewController.m */,
 			);
 			name = SlideOutViewControllers;
 			sourceTree = "<group>";
@@ -303,6 +307,36 @@
 				CD9DB50C18D634EA00C56BD8 /* SDUBarListAnnotation.m */,
 			);
 			name = BarView;
+			sourceTree = "<group>";
+		};
+		CD9DB51118D657AE00C56BD8 /* MyLists */ = {
+			isa = PBXGroup;
+			children = (
+				CD9DB51218D657DF00C56BD8 /* SDUMyListsHomeViewController.h */,
+				CD9DB51318D657DF00C56BD8 /* SDUMyListsHomeViewController.m */,
+				CD9DB51618D7E23C00C56BD8 /* MyRestaurants */,
+			);
+			name = MyLists;
+			sourceTree = "<group>";
+		};
+		CD9DB51518D68EC100C56BD8 /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				CD84B589191EDBAB003C9705 /* SDUMyFriendsTableViewController.h */,
+				CD84B58A191EDBAB003C9705 /* SDUMyFriendsTableViewController.m */,
+			);
+			name = Friends;
+			sourceTree = "<group>";
+		};
+		CD9DB51618D7E23C00C56BD8 /* MyRestaurants */ = {
+			isa = PBXGroup;
+			children = (
+				CD9DB51D18D7E87B00C56BD8 /* SDUMyRestViewController.h */,
+				CD9DB51E18D7E87B00C56BD8 /* SDUMyRestViewController.m */,
+				CDC84F5618D7F97300FAB326 /* SDUMyRestDetailViewController.h */,
+				CDC84F5718D7F97300FAB326 /* SDUMyRestDetailViewController.m */,
+			);
+			name = MyRestaurants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -403,6 +437,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD84B58B191EDBAB003C9705 /* SDUMyFriendsTableViewController.m in Sources */,
 				CD9DB50D18D634EA00C56BD8 /* SDUBarListAnnotation.m in Sources */,
 				CD9DB50418D6304C00C56BD8 /* SDUBar.m in Sources */,
 				CD9DB51018D635E900C56BD8 /* SDUBarDetailViewController.m in Sources */,
@@ -410,12 +445,11 @@
 				CD9DB50A18D632EB00C56BD8 /* SDUBarMapListViewController.m in Sources */,
 				CD9DB4DB18D2909B00C56BD8 /* RECommonFunctions.m in Sources */,
 				CD9DB4F318D2936C00C56BD8 /* SDUNavigationController.m in Sources */,
-				CD9DB4ED18D2933900C56BD8 /* SDUHomeViewController.m in Sources */,
 				CD9DB46C18C8176000C56BD8 /* SDURestListAnnotation.m in Sources */,
 				CD9DB46F18C8178B00C56BD8 /* SDURestDetailViewController.m in Sources */,
 				CD9DB4EA18D2930900C56BD8 /* SDUMenuViewController.m in Sources */,
 				CD9DB46918C8173C00C56BD8 /* SDURestMapListViewController.m in Sources */,
-				CD9DB4F018D2934700C56BD8 /* SDUSecondViewController.m in Sources */,
+				CD9DB51F18D7E87B00C56BD8 /* SDUMyRestViewController.m in Sources */,
 				CD9DB4DF18D2909B00C56BD8 /* UIView+REFrostedViewController.m in Sources */,
 				CD9DB4E418D2913400C56BD8 /* SDURootViewController.m in Sources */,
 				CD9DB50718D6323100C56BD8 /* SDUBarHomeViewController.m in Sources */,
@@ -423,7 +457,9 @@
 				CD9DB4DC18D2909B00C56BD8 /* REFrostedContainerViewController.m in Sources */,
 				CD9DB4DE18D2909B00C56BD8 /* UIImage+REFrostedViewController.m in Sources */,
 				CD9DB47218C819BD00C56BD8 /* SDURest.m in Sources */,
+				CD9DB51418D657DF00C56BD8 /* SDUMyListsHomeViewController.m in Sources */,
 				CD9DB43818C816BB00C56BD8 /* main.m in Sources */,
+				CDC84F5818D7F97300FAB326 /* SDUMyRestDetailViewController.m in Sources */,
 				CD9DB4C218CD54BC00C56BD8 /* SDURegisterViewController.m in Sources */,
 				CD9DB4E018D2909B00C56BD8 /* UIViewController+REFrostedViewController.m in Sources */,
 				CD9DB43C18C816BB00C56BD8 /* SDUAppDelegate.m in Sources */,

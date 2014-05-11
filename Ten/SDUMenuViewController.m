@@ -7,8 +7,9 @@
 //
 
 #import "SDUMenuViewController.h"
-#import "SDUHomeViewController.h"
-#import "SDUSecondViewController.h"
+#import "SDURestHomeViewController.h"
+#import "SDUBarHomeViewController.h"
+#import "SDUMyListsHomeViewController.h"
 #import "SDUNavigationController.h"
 #import "UIViewController+REFrostedViewController.h"
 
@@ -97,11 +98,17 @@
     SDUNavigationController *navigationController = [self.storyboard instantiateViewControllerWithIdentifier:@"contentController"];
     
     if (indexPath.section == 0 && indexPath.row == 0) {
-        SDUHomeViewController *homeViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"restaurantsController"];
-        navigationController.viewControllers = @[homeViewController];
-    } else {
-        SDUSecondViewController *secondViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"barsController"];
-        navigationController.viewControllers = @[secondViewController];
+        SDURestHomeViewController *restHomeViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"restaurantsController"];
+        navigationController.viewControllers = @[restHomeViewController];
+    } else if (indexPath.section == 0 && indexPath.row == 1) {
+        SDUBarHomeViewController *barHomeViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"barsController"];
+        navigationController.viewControllers = @[barHomeViewController];
+    } else if (indexPath.section == 0 && indexPath.row == 2){
+        SDUMyListsHomeViewController *myListsHomeViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"myListsController"];
+        navigationController.viewControllers = @[myListsHomeViewController];
+    } else if (indexPath.section == 0 && indexPath.row == 3){
+        SDUMyListsHomeViewController *myListsHomeViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"myFriendsController"];
+        navigationController.viewControllers = @[myListsHomeViewController];
     }
     
     self.frostedViewController.contentViewController = navigationController;
