@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "REFrostedViewController.h"
+#import "SDUFriend.h"
 
 @interface SDUMyFriendsTableViewController : UITableViewController
+
+@property (nonatomic, strong) NSMutableArray *myFriends;
+
+@property (nonatomic, strong) NSArray *searchResults;
 
 - (IBAction)showMenu:(id)sender;
 

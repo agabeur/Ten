@@ -7,12 +7,18 @@
 //
 
 #import "SDUMyFriendsTableViewController.h"
+#import "SDUFriendProfileViewController.h"
+#import "SDUFriendCell.h"
 
 @interface SDUMyFriendsTableViewController ()
 
 @end
 
 @implementation SDUMyFriendsTableViewController
+
+@synthesize myFriends = _myFriends;
+
+@synthesize searchResults = _searchResults;
 
 -(void)showMenu:(id)sender
 {
@@ -38,12 +44,27 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.myFriends = [[NSMutableArray alloc] init];
+    self.searchResults = [[NSArray alloc] init];
+    
+    SDUFriend *xavier = [[SDUFriend alloc] initWithName:@"Xavier"];
+    [self.myFriends addObject:xavier];
+    
+    SDUFriend *catherine = [[SDUFriend alloc] initWithName:@"Catherine"];
+    [self.myFriends addObject:catherine];
+    
+    SDUFriend *victor = [[SDUFriend alloc] initWithName:@"Victor"];
+    [self.myFriends addObject:victor];
+    
+    SDUFriend *jg = [[SDUFriend alloc] initWithName:@"JG"];
+    [self.myFriends addObject:jg];
+    
+    SDUFriend *agathe = [[SDUFriend alloc] initWithName:@"Agathe"];
+    [self.myFriends addObject:agathe];
+    
+    SDUFriend *alexandra = [[SDUFriend alloc] initWithName:@"Alexandra"];
+    [self.myFriends addObject:alexandra];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -53,29 +74,58 @@
 }
 
 #pragma mark - Table view data source
-
+/*
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
-}
+    return 1;
+}*/
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return [self.searchResults count];
+    } else {
+        return [self.myFriends count];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    static NSString *CellIdentifier = @"friendCell";
+    SDUFriendCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
+    if (cell == nil) {
+        cell = [[SDUFriendCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell.friend = nil;
+    }
+    
+    SDUFriend *currentFriend = nil;
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        currentFriend = [self.searchResults objectAtIndex:indexPath.row];
+    } else {
+        currentFriend = [self.myFriends objectAtIndex:indexPath.row];
+    }
+    cell.friend = currentFriend;
+    cell.textLabel.text = cell.friend.name;
     
     return cell;
+}
+
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+{
+    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"name contains[c] %@", searchText];
+    self.searchResults = [self.myFriends filteredArrayUsingPredicate:resultPredicate];
+}
+
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+{
+    [self filterContentForSearchText:searchString
+                               scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
+                                      objectAtIndex:[self.searchDisplayController.searchBar
+                                                     selectedScopeButtonIndex]]];
+    
+    return YES;
 }
 
 /*
@@ -117,16 +167,22 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    SDUFriendProfileViewController *friendProfileViewController = segue.destinationViewController;
+    SDUFriend *curFriend = nil;
+    if (self.searchDisplayController.active) {
+        curFriend = [self.searchResults objectAtIndex:self.searchDisplayController.searchResultsTableView.indexPathForSelectedRow.row];
+    } else {
+        curFriend = [self.myFriends objectAtIndex:self.tableView.indexPathForSelectedRow.row];
+    }
+        friendProfileViewController.friend = curFriend;
 }
 
- */
+ 
 
 @end
