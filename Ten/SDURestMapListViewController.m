@@ -9,8 +9,13 @@
 #import "SDURestMapListViewController.h"
 #import "SDURest.h"
 #import "SDURestDetailViewController.h"
+#import "NSString+NSString_extended.h"
 
 @interface SDURestMapListViewController ()
+{
+    SDURestMapListModel *_SDURestMapListModel;
+    NSArray *_feedItems;
+}
 
 @end
 
@@ -31,34 +36,23 @@
     self.restaurants = [[NSMutableArray alloc]init];
     self.annotations = [[NSMutableArray alloc]init];
     
-    //Add example restaurant
-    CLLocationCoordinate2D acmeC2D;
-    acmeC2D.latitude = (double) 40.727221;
-    acmeC2D.longitude = (double) -73.99406899999997;
-    SDURest *firstRest = [[SDURest alloc]initWithName:@"ACME" address:@"9 Great Jones St New York, NY 10012" coordinates:acmeC2D relevance:189];
-    [self.restaurants addObject:firstRest];
+    // Create array object and assign it to _feedItems variable
+    _feedItems = [[NSArray alloc] init];
     
+    // Create new HomeModel object and assign it to _homeModel variable
+    _SDURestMapListModel = [[SDURestMapListModel alloc] init];
     
-    //Add second example restaurant
-    CLLocationCoordinate2D bondstC2D;
-    bondstC2D.latitude = (double) 40.7269571;
-    bondstC2D.longitude = (double) -73.99439899999999;
-    SDURest *secondtRest = [[SDURest alloc]initWithName:@"Bondst" address:@"6 Bond St New York, 10012" coordinates:bondstC2D relevance:210];
-    [self.restaurants addObject:secondtRest];
+    // Set this view controller object as the delegate for the home model object
+    _SDURestMapListModel.delegate = self;
+    
+    //URL encode the mood
+    NSString *URLMood = [_mood urlEncodeUsingEncoding:NSUTF8StringEncoding];
+    
+    // Call the download items method of the home model object
+    [_SDURestMapListModel downloadItems:URLMood];
     
     //Boolean to flip between list and map views
     self.displayingListView = YES;
-    
-    //Add annotations to map
-    for (SDURest *rest in self.restaurants) {
-        SDURestListAnnotation *newAnnotation = [[SDURestListAnnotation alloc]initWithRest:rest];
-        [self.annotations addObject:newAnnotation];
-    }
-    [self.mapView addAnnotations:self.annotations];
-    
-    //Center map and zoom in
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(firstRest.coordinates, 3000, 3000);
-    [self.mapView setRegion:region animated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -71,6 +65,33 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+-(void)restDownloaded:(NSArray *)items
+{
+    // This delegate method will get called when the items are finished downloading
+    
+    // Set the downloaded items to the array
+    _feedItems = items;
+    
+    [self.restaurants addObjectsFromArray:_feedItems];
+    
+    //Add annotations to map
+    for (SDURest *rest in self.restaurants) {
+        SDURestListAnnotation *newAnnotation = [[SDURestListAnnotation alloc]initWithRest:rest];
+        [self.annotations addObject:newAnnotation];
+    }
+    [self.mapView addAnnotations:self.annotations];
+    
+    //Center map and zoom in
+    CLLocationCoordinate2D center;
+    center.latitude = (double) 40.727221;
+    center.longitude = (double) -73.99406899999997;
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(center, 3000, 3000);
+    [self.mapView setRegion:region animated:YES];
+    
+    // Reload the table view
+    [self.listView reloadData];
 }
 
 #pragma mark - Table view data source

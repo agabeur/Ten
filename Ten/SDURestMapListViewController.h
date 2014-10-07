@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "SDURestListAnnotation.h"
+#import "SDURestMapListModel.h"
 
-@interface SDURestMapListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate>
+@interface SDURestMapListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate, SDURestMapListModelProtocol>
 
 @property (nonatomic, strong) NSMutableArray *restaurants;
 @property (nonatomic, strong) NSMutableArray *annotations;

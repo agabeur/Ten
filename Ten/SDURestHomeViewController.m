@@ -15,7 +15,7 @@
 
 @implementation SDURestHomeViewController
 
--(void)showMenu:(id)sender
+- (void)showMenu:(id)sender
 {
     // Dismiss keyboard (optional)
     //

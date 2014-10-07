@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "SDUBarListAnnotation.h"
+#import "SDUBarMapListModel.h"
 
-@interface SDUBarMapListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate>
+@interface SDUBarMapListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate, SDUBarMapListModelProtocol>
 
 @property (nonatomic, strong) NSMutableArray *bars;
 @property (nonatomic, strong) NSMutableArray *annotations;

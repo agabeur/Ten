@@ -7,6 +7,7 @@
 //
 
 #import "SDULoginViewController.h"
+#import "SDURestHomeViewController.h"
 
 @interface SDULoginViewController ()
 
@@ -16,7 +17,7 @@
 
 @implementation SDULoginViewController
 
--(void)toggleHiddenState:(BOOL)shouldHide{
+- (void)toggleHiddenState:(BOOL)shouldHide{
     self.lblUsername.hidden = shouldHide;
     self.lblEmail.hidden = shouldHide;
     self.profilePicture.hidden = shouldHide;
@@ -25,7 +26,38 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    //Customize login button
+    /*FBLoginView *loginview =
+    [[FBLoginView alloc] init];
+    
+    
+    loginview.frame = CGRectMake(4, 95, 271, 37);
+    for (id obj in loginview.subviews)
+    {
+        if ([obj isKindOfClass:[UIButton class]])
+        {
+            UIButton * loginButton =  obj;
+            UIImage *loginImage = [UIImage imageNamed:@"YourImg.png"];
+            [loginButton setBackgroundImage:loginImage forState:UIControlStateNormal];
+            [loginButton setBackgroundImage:nil forState:UIControlStateSelected];
+            [loginButton setBackgroundImage:nil forState:UIControlStateHighlighted];
+            [loginButton sizeToFit];
+        }
+        if ([obj isKindOfClass:[UILabel class]])
+        {
+            UILabel * loginLabel =  obj;
+            loginLabel.text = @"Log in to facebook";
+            loginLabel.textAlignment = NSTextAlignmentCenter;
+            loginLabel.frame = CGRectMake(0, 0, 271, 37);
+        }
+    }
+    
+    loginview.delegate = self;
+    
+    [self.view addSubview:loginview];
+    */
+    
     self.loginButton.delegate = self;
     [self toggleHiddenState:YES];
     self.lblLoginStatus.text = @"";
@@ -37,6 +69,10 @@
     self.lblLoginStatus.text = @"You are logged in.";
     
     [self toggleHiddenState:NO];
+    
+    SDURestHomeViewController *test = [self.storyboard instantiateViewControllerWithIdentifier:@"rootController"];
+    //[[SDURestHomeViewController alloc]init];
+    [self presentViewController:test animated:NO completion:nil];
 }
 
 -(void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView{
