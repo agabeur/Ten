@@ -252,7 +252,7 @@
         <!--Login View Controller-->
         <scene sceneID="vYO-uN-Tce">
             <objects>
-                <viewController id="Jid-Sj-6Gb" customClass="SDULoginViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginHomeView" id="Jid-Sj-6Gb" customClass="SDULoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tTX-D7-xRg"/>
                         <viewControllerLayoutGuide type="bottom" id="KYX-ju-dr0"/>
@@ -292,7 +292,7 @@
                         <outlet property="lblEmail" destination="BJp-qh-JZp" id="AGD-aa-fg1"/>
                         <outlet property="lblLoginStatus" destination="lf6-dk-avy" id="Zdp-o7-MHC"/>
                         <outlet property="lblUsername" destination="NW2-gh-dJ8" id="WtM-uF-ulq"/>
-                        <outlet property="loginButton" destination="hP8-4c-SbE" id="x5p-Dn-Qxr"/>
+                        <outlet property="loginButton" destination="hP8-4c-SbE" id="OpH-8F-wNS"/>
                         <outlet property="profilePicture" destination="DXY-Ad-myn" id="Cat-kF-Go3"/>
                     </connections>
                 </viewController>
@@ -360,6 +360,7 @@
                         <segue destination="BJP-1Z-qif" kind="push" identifier="barSegue" id="Snc-yG-x5e"/>
                         <segue destination="tCB-ff-vwi" kind="push" identifier="myListsSegue" id="vb9-d4-NaC"/>
                         <segue destination="Y6H-F7-ZJu" kind="push" identifier="myFriendsSegue" id="gWs-bP-iYF"/>
+                        <segue destination="ky8-UG-TeG" kind="push" identifier="settingsView" id="Use-LB-Trs"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3cb-jo-iGB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -702,6 +703,34 @@
                 </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1778" y="2749"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="5Wh-tL-vsI">
+            <objects>
+                <viewController storyboardIdentifier="settingsViewController" id="ky8-UG-TeG" customClass="SDUSettingsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mK6-2D-cXS"/>
+                        <viewControllerLayoutGuide type="bottom" id="6SS-Zo-TJW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="56V-KV-bKP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZxF-6o-lSa" customClass="FBLoginView">
+                                <rect key="frame" x="68" y="215" width="184" height="80"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Xog-cq-kvi"/>
+                    <connections>
+                        <outlet property="logoutButton" destination="ZxF-6o-lSa" id="u7N-FJ-tFz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FeB-pp-eEc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1755" y="3546"/>
         </scene>
         <!--Friend Profile View Controller-->
         <scene sceneID="Q07-sa-e4S">

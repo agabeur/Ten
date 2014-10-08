@@ -53,6 +53,7 @@
 		CDE7E86519DA5A470055BAF2 /* SDURestMapListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE7E86419DA5A470055BAF2 /* SDURestMapListModel.m */; };
 		CDE7E86819E048F60055BAF2 /* SDUBarMapListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE7E86719E048F60055BAF2 /* SDUBarMapListModel.m */; };
 		CDE7E86E19E0B2790055BAF2 /* NSString+NSString_extended.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE7E86D19E0B2790055BAF2 /* NSString+NSString_extended.m */; };
+		CDE7E87219E4BE2D0055BAF2 /* SDUSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE7E87119E4BE2D0055BAF2 /* SDUSettingsViewController.m */; };
 		CDFDCD1D19230BDA00943FA5 /* SDUFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = CDFDCD1C19230BDA00943FA5 /* SDUFriend.m */; };
 		CDFDCD201927A2BF00943FA5 /* SDUFriendProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDFDCD1F1927A2BF00943FA5 /* SDUFriendProfileViewController.m */; };
 		CDFDCD231927CC1600943FA5 /* SDUFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDFDCD221927CC1600943FA5 /* SDUFriendCell.m */; };
@@ -149,6 +150,8 @@
 		CDE7E86719E048F60055BAF2 /* SDUBarMapListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDUBarMapListModel.m; sourceTree = "<group>"; };
 		CDE7E86C19E0B2790055BAF2 /* NSString+NSString_extended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+NSString_extended.h"; path = "Ten/NSString+NSString_extended.h"; sourceTree = "<group>"; };
 		CDE7E86D19E0B2790055BAF2 /* NSString+NSString_extended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+NSString_extended.m"; path = "Ten/NSString+NSString_extended.m"; sourceTree = "<group>"; };
+		CDE7E87019E4BE2D0055BAF2 /* SDUSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDUSettingsViewController.h; sourceTree = "<group>"; };
+		CDE7E87119E4BE2D0055BAF2 /* SDUSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDUSettingsViewController.m; sourceTree = "<group>"; };
 		CDFDCD1B19230BDA00943FA5 /* SDUFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDUFriend.h; sourceTree = "<group>"; };
 		CDFDCD1C19230BDA00943FA5 /* SDUFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDUFriend.m; sourceTree = "<group>"; };
 		CDFDCD1E1927A2BF00943FA5 /* SDUFriendProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDUFriendProfileViewController.h; sourceTree = "<group>"; };
@@ -229,6 +232,7 @@
 				CD9DB50118D6300F00C56BD8 /* BarView */,
 				CD9DB51118D657AE00C56BD8 /* MyLists */,
 				CD9DB51518D68EC100C56BD8 /* Friends */,
+				CDE7E86F19E4BDB40055BAF2 /* Settings */,
 				CDFDCD251927DEC000943FA5 /* Common */,
 				CD9DB43A18C816BB00C56BD8 /* SDUAppDelegate.h */,
 				CD9DB43B18C816BB00C56BD8 /* SDUAppDelegate.m */,
@@ -377,6 +381,15 @@
 			name = MyRestaurants;
 			sourceTree = "<group>";
 		};
+		CDE7E86F19E4BDB40055BAF2 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				CDE7E87019E4BE2D0055BAF2 /* SDUSettingsViewController.h */,
+				CDE7E87119E4BE2D0055BAF2 /* SDUSettingsViewController.m */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 		CDFDCD251927DEC000943FA5 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -520,6 +533,7 @@
 				CDFDCD1D19230BDA00943FA5 /* SDUFriend.m in Sources */,
 				CD9DB4DE18D2909B00C56BD8 /* UIImage+REFrostedViewController.m in Sources */,
 				CD9FCA5A196B6BCE002918BD /* SDULoginViewController.m in Sources */,
+				CDE7E87219E4BE2D0055BAF2 /* SDUSettingsViewController.m in Sources */,
 				CD9DB47218C819BD00C56BD8 /* SDURest.m in Sources */,
 				CD9DB51418D657DF00C56BD8 /* SDUMyListsHomeViewController.m in Sources */,
 				CD9DB43818C816BB00C56BD8 /* main.m in Sources */,

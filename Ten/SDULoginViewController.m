@@ -32,7 +32,7 @@
     [[FBLoginView alloc] init];
     
     
-    loginview.frame = CGRectMake(4, 95, 271, 37);
+    loginview.frame = CGRectMake(0, 0, 271, 37);
     for (id obj in loginview.subviews)
     {
         if ([obj isKindOfClass:[UIButton class]])
@@ -70,9 +70,8 @@
     
     [self toggleHiddenState:NO];
     
-    SDURestHomeViewController *test = [self.storyboard instantiateViewControllerWithIdentifier:@"rootController"];
-    //[[SDURestHomeViewController alloc]init];
-    [self presentViewController:test animated:NO completion:nil];
+    SDURestHomeViewController *restHomeView = [self.storyboard instantiateViewControllerWithIdentifier:@"rootController"];
+    [self presentViewController:restHomeView animated:NO completion:nil];
 }
 
 -(void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView{

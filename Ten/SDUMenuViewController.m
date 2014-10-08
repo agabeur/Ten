@@ -10,6 +10,7 @@
 #import "SDURestHomeViewController.h"
 #import "SDUBarHomeViewController.h"
 #import "SDUMyListsHomeViewController.h"
+#import "SDUSettingsViewController.h"
 #import "SDUNavigationController.h"
 #import "UIViewController+REFrostedViewController.h"
 
@@ -109,6 +110,9 @@
     } else if (indexPath.section == 0 && indexPath.row == 3){
         SDUMyListsHomeViewController *myListsHomeViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"myFriendsController"];
         navigationController.viewControllers = @[myListsHomeViewController];
+    } else if (indexPath.section == 0 && indexPath.row == 4){
+        SDUMyListsHomeViewController *settingsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"settingsViewController"];
+        navigationController.viewControllers = @[settingsViewController];
     }
     
     self.frostedViewController.contentViewController = navigationController;
