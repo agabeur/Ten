@@ -7,6 +7,8 @@
 //
 
 #import "SDULoginViewController.h"
+#import "SDUMenuViewController.h"
+#import "SDURootViewController.h"
 #import "SDURestHomeViewController.h"
 
 @interface SDULoginViewController ()
@@ -17,6 +19,8 @@
 
 @implementation SDULoginViewController
 
+@synthesize profileImage = _profileImage;
+
 - (void)toggleHiddenState:(BOOL)shouldHide{
     self.lblUsername.hidden = shouldHide;
     self.lblEmail.hidden = shouldHide;
@@ -26,6 +30,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //_profileImage = [[UIImage alloc]init];
     
     //Customize login button
     /*FBLoginView *loginview =
@@ -70,8 +76,9 @@
     
     [self toggleHiddenState:NO];
     
-    SDURestHomeViewController *restHomeView = [self.storyboard instantiateViewControllerWithIdentifier:@"rootController"];
-    [self presentViewController:restHomeView animated:NO completion:nil];
+    SDURootViewController *rootController = [self.storyboard instantiateViewControllerWithIdentifier:@"rootController"];
+    rootController.profileImage = self.profileImage;
+    [self presentViewController:rootController animated:NO completion:nil];
 }
 
 -(void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView{
@@ -85,6 +92,16 @@
     self.profilePicture.profileID = user.objectID;
     self.lblUsername.text = user.name;
     self.lblEmail.text = [user objectForKey:@"email"];
+    
+    /*
+    //this is not getting the right image
+    for (NSObject *obj in [_profilePicture subviews]) {
+        if ([obj isMemberOfClass:[UIImageView class]]) {
+            UIImageView *objImg = (UIImageView *)obj;
+            _profileImage = objImg.image;
+            break;
+        }
+    }*/
 }
 
 -(void)loginView:(FBLoginView *)loginView handleError:(NSError *)error{
@@ -110,11 +127,12 @@
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+
+    SDUMenuViewController *menuViewController = segue.destinationViewController;
+    menuViewController.menuProfileImage = self.profileImage;
+}*/
 
 @end

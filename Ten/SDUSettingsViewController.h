@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
+#import "REFrostedViewController.h"
 
 @interface SDUSettingsViewController : UIViewController <FBLoginViewDelegate>
 
 @property (weak, nonatomic) IBOutlet FBLoginView *logoutButton;
+
+- (IBAction)showMenu:(id)sender;
 
 @end

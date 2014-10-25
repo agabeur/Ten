@@ -11,4 +11,6 @@
 
 @interface SDURootViewController : REFrostedViewController
 
+@property (weak, nonatomic) UIImage *profileImage;
+
 @end
