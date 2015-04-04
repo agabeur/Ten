@@ -9,10 +9,14 @@
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
 #import "REFrostedViewController.h"
+#import "SDUFacebookData.h"
 
 @interface SDUSettingsViewController : UIViewController <FBLoginViewDelegate>
 
 @property (weak, nonatomic) IBOutlet FBLoginView *logoutButton;
+@property (weak, nonatomic) IBOutlet FBProfilePictureView *profilePicture;
+@property (weak, nonatomic) IBOutlet UILabel *name;
+@property (weak, nonatomic) FBGraphObject *user;
 
 - (IBAction)showMenu:(id)sender;
 

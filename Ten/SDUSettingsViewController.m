@@ -14,6 +14,9 @@
 @end
 
 @implementation SDUSettingsViewController
+@synthesize profilePicture = _profilePicture;
+@synthesize name = _name;
+@synthesize user = _user;
 
 - (void)showMenu:(id)sender
 {
@@ -27,10 +30,18 @@
     [self.frostedViewController presentMenuViewController];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    SDUFacebookData *facebookData = [SDUFacebookData sharedFacebookData];
+    self.user = facebookData.user;
+    self.profilePicture.profileID = [self.user objectForKey:@"id"];
+    self.name.text = [self.user objectForKey:@"name"];
+    self.logoutButton.delegate = self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.logoutButton.delegate = self;
+    
 }
 
 - (void)didReceiveMemoryWarning {

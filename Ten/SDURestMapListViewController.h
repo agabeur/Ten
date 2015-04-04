@@ -10,8 +10,9 @@
 #import <MapKit/MapKit.h>
 #import "SDURestListAnnotation.h"
 #import "SDURestMapListModel.h"
+#import <CoreLocation/CoreLocation.h>
 
-@interface SDURestMapListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate, SDURestMapListModelProtocol>
+@interface SDURestMapListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate, CLLocationManagerDelegate, SDURestMapListModelProtocol>
 
 @property (nonatomic, strong) NSMutableArray *restaurants;
 @property (nonatomic, strong) NSMutableArray *annotations;
@@ -21,9 +22,10 @@
 
 @property (nonatomic, strong) IBOutlet UITableView *listView;
 @property (nonatomic, strong) IBOutlet MKMapView *mapView;
-@property (nonatomic, strong) IBOutlet UIBarButtonItem *flipButton;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *mapButton;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *listButton;
 
 - (IBAction)flipBetweenViews:(id)sender;
-
+- (IBAction)centerMapOnUserButtonClicked:(id)sender;
 
 @end

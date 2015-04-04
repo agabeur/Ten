@@ -11,12 +11,10 @@
 @implementation SDURest
 
 @synthesize name = _name;
-
 @synthesize address = _address;
-
 @synthesize coordinates = _coordinates;
-
 @synthesize relevance = _relevance;
+@synthesize factual_id = _factual_id;
 
 - (id)initWithName:(NSString *)name address:(NSString *)address coordinates:(CLLocationCoordinate2D)coordinates relevance:(int)relevance{
     self = [super init];

@@ -10,10 +10,9 @@
 #import "REFrostedViewController.h"
 #import "SDUFriend.h"
 
-@interface SDUMyFriendsTableViewController : UITableViewController
+@interface SDUMyFriendsTableViewController : UITableViewController <UISearchControllerDelegate, UISearchResultsUpdating>
 
 @property (nonatomic, strong) NSMutableArray *myFriends;
-
 @property (nonatomic, strong) NSArray *searchResults;
 
 - (IBAction)showMenu:(id)sender;

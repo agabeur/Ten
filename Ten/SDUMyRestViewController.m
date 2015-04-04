@@ -9,8 +9,17 @@
 #import "SDUMyRestViewController.h"
 #import "SDURest.h"
 #import "SDUMyRestDetailViewController.h"
+#import "NSString+NSString_extended.h"
+#import "SDUAddRestTableViewController.h"
 
 @interface SDUMyRestViewController ()
+{
+    SDUMyRestModel *_SDUMyRestModel;
+    NSArray *_feedItems;
+    SDUSearchRestModel *_SDUSearchRestModel;
+    NSArray *_feedSearchItems;
+    BOOL _isSearching;
+}
 
 @end
 
@@ -19,91 +28,56 @@
 @synthesize restaurants = _restaurants;
 @synthesize listView = _listView;
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    _isSearching = false;
+    [self.tableView reloadData];
+    
+    self.restaurants = [[NSMutableArray alloc]init];
+    _feedItems = [[NSArray alloc]init];
+    _feedSearchItems = [[NSArray alloc] init];
+
+    _SDUMyRestModel = [[SDUMyRestModel alloc]init];
+    _SDUSearchRestModel = [[SDUSearchRestModel alloc]init];
+    
+    _SDUMyRestModel.delegate = self;
+    _SDUSearchRestModel.delegate = self;
+    
+    [_SDUMyRestModel downloadMyRestaurants];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.restaurants = [[NSMutableArray alloc]init];
     
-    //Add example restaurant
-    CLLocationCoordinate2D acmeC2D;
-    acmeC2D.latitude = (double) 40.727221;
-    acmeC2D.longitude = (double) -73.99406899999997;
-    SDURest *firstRest = [[SDURest alloc]initWithName:@"ACME" address:@"9 Great Jones St New York, NY 10012" coordinates:acmeC2D relevance:189];
-    [self.restaurants addObject:firstRest];
-    
-    
-    //Add second example restaurant
-    CLLocationCoordinate2D bondstC2D;
-    bondstC2D.latitude = (double) 40.7269571;
-    bondstC2D.longitude = (double) -73.99439899999999;
-    SDURest *secondtRest = [[SDURest alloc]initWithName:@"Bondst" address:@"6 Bond St New York, 10012" coordinates:bondstC2D relevance:210];
-    [self.restaurants addObject:secondtRest];
-    
-    CLLocationCoordinate2D buenosAiresC2D;
-    buenosAiresC2D.latitude = (double) 40.725229;
-    buenosAiresC2D.longitude = (double) -73.983091;
-    SDURest *thirdRest = [[SDURest alloc]initWithName:@"Buenos Aires" address:@"513 E 6th St New York, NY 10009" coordinates:buenosAiresC2D relevance:300];
-    [self.restaurants addObject:thirdRest];
-    
-    CLLocationCoordinate2D beautyEssexC2D;
-    beautyEssexC2D.latitude = (double) 40.720408;
-    beautyEssexC2D.longitude = (double) -73.986883;
-    SDURest *fourthRest = [[SDURest alloc]initWithName:@"Beauty & Essex" address:@"146 Essex St New York, NY 10002" coordinates:beautyEssexC2D relevance:150];
-    [self.restaurants addObject:fourthRest];
-    
-    CLLocationCoordinate2D tacombiC2D;
-    tacombiC2D.latitude = (double) 40.724014;
-    tacombiC2D.longitude = (double) -73.993735;
-    SDURest *fifthRest = [[SDURest alloc]initWithName:@"Tacombi" address:@"267 Elizabeth St New York, NY 10012" coordinates:tacombiC2D relevance:150];
-    [self.restaurants addObject:fifthRest];
-    
-    CLLocationCoordinate2D shabuTatsuC2D;
-    shabuTatsuC2D.latitude = (double) 40.7293014;
-    shabuTatsuC2D.longitude = (double) -73.9858445;
-    SDURest *sixthRest = [[SDURest alloc]initWithName:@"Shabu-Tatsu" address:@"216 E 10th St New York, NY 10003" coordinates:shabuTatsuC2D relevance:150];
-    [self.restaurants addObject:sixthRest];
-    
-    CLLocationCoordinate2D blackCrescentC2D;
-    blackCrescentC2D.latitude = (double) 40.718931;
-    blackCrescentC2D.longitude = (double) -73.985001;
-    SDURest *seventhRest = [[SDURest alloc]initWithName:@"Black Crescent" address:@"76 Clinton St New York, NY 10002" coordinates:blackCrescentC2D relevance:150];
-    [self.restaurants addObject:seventhRest];
-    
-    CLLocationCoordinate2D raymiC2D;
-    raymiC2D.latitude = (double) 40.743425;
-    raymiC2D.longitude = (double) -73.991342;
-    SDURest *eigthRest = [[SDURest alloc]initWithName:@"Raymi" address:@"43 W 24th St New York, NY 10010" coordinates:raymiC2D relevance:150];
-    [self.restaurants addObject:eigthRest];
-    
-    CLLocationCoordinate2D blackIronC2D;
-    blackIronC2D.latitude = (double) 40.724027;
-    blackIronC2D.longitude = (double) -73.98278;
-    SDURest *ninthRest = [[SDURest alloc]initWithName:@"Black Iron" address:@"540 E 5th St New York, NY 10009" coordinates:blackIronC2D relevance:150];
-    [self.restaurants addObject:ninthRest];
-    
-    /*CLLocationCoordinate2D sushiOfGariC2D;
-    sushiOfGariC2D.latitude = (double) 40.716773;
-    sushiOfGariC2D.longitude = (double) -74.008431;
-    SDURest *tenthRest = [[SDURest alloc]initWithName:@"Sushi of Gari" address:@"130 W Broadway New York, NY 10013" coordinates:sushiOfGariC2D relevance:150];
-    [self.restaurants addObject:tenthRest];*/
- 
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)restDownloaded:(NSArray *)items
+{
+    _feedItems = items;
+    self.restaurants = NULL;
+    self.restaurants = [[NSMutableArray alloc]init];
+    [self.restaurants addObjectsFromArray:_feedItems];
+    [self.listView reloadData];
+
+}
+
+-(void)restSearchDownloaded:(NSArray *)items
+{
+    _feedSearchItems = items;
+    self.searchResults = nil;
+    self.searchResults = [[NSMutableArray alloc] init];
+    [self.searchResults addObjectsFromArray:_feedSearchItems];
+    [self.listView reloadData];
 }
 
 #pragma mark - Table view data source
@@ -115,34 +89,38 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (self.restaurants.count == 10) {
-        return 10;
-    } else return self.restaurants.count + 1;
+    if (!_isSearching) {
+        return self.restaurants.count;
+    } else return self.searchResults.count;
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row < self.restaurants.count) {
-        static NSString *CellIdentifier = @"RestCell";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-        SDURest *currentRest = [self.restaurants objectAtIndex:indexPath.row];
-        cell.textLabel.text = currentRest.name;
-        return cell;
-        
+    if (!_isSearching) {
+            static NSString *CellIdentifier = @"RestCell";
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+            SDURest *currentRest = [self.restaurants objectAtIndex:indexPath.row];
+            cell.textLabel.text = currentRest.name;
+            return cell;
     } else {
-        static NSString *CellIdentifier = @"AddRestCell";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-        cell.textLabel.text = @"Add a restaurant";
-        return cell;
+    static NSString *CellIdentifier = @"AddRestCell";
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    SDURest *currentRest = [self.searchResults objectAtIndex:indexPath.row];
+    NSString *text = currentRest.name;
+    cell.textLabel.text = text;
+    
+    return cell;
     }
 }
 
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row < self.restaurants.count) {
+    if (!_isSearching) {
         return YES;
-    }else return NO;
+    } else return NO;
 }
 
 // Override to support editing the table view.
@@ -150,30 +128,29 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
+        [_SDUMyRestModel deleteRestaurant:[self.restaurants objectAtIndex:indexPath.row]];
         [self.restaurants removeObjectAtIndex:indexPath.row];
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];        
+    }
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    }
 }
 
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    SDURest *movedRest = [self.restaurants objectAtIndex:fromIndexPath.row];
-    [self.restaurants removeObjectAtIndex:fromIndexPath.row];
-    [self.restaurants insertObject:movedRest atIndex:toIndexPath.row];
-    
+    if ([searchText length] == 0) {
+        _isSearching = false;
+        self.searchResults = nil;
+        self.searchResults = [[NSMutableArray alloc] init];
+        [self.listView reloadData];
+    }else{
+        _isSearching = true;
+        NSString *URLSearchText = [searchText urlEncodeUsingEncoding:NSUTF8StringEncoding];
+        [_SDUSearchRestModel downloadItems:URLSearchText];
+        [self.listView reloadData];
+    }
 }
-
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-
 
 #pragma mark - Navigation
 
@@ -184,6 +161,10 @@
         SDUMyRestDetailViewController *restDetailViewController = segue.destinationViewController;
         restDetailViewController.curRest = [self.restaurants objectAtIndex:self.listView.indexPathForSelectedRow.row];
         
+    } else if ([segue.identifier isEqualToString:@"addRestSegue"]) {
+        SDUAddRestTableViewController *addRestTableViewController = segue.destinationViewController;
+        addRestTableViewController.curRest = [self.searchResults objectAtIndex:self.tableView.indexPathForSelectedRow.row];
+
     }
 }
 

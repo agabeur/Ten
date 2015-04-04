@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SDUMyRestModel.h"
+#import "SDUSearchRestModel.h"
 
-@interface SDUMyRestViewController : UITableViewController
+@interface SDUMyRestViewController : UITableViewController<SDUMyRestModelProtocol, SDUSearchRestModelProtocol, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *restaurants;
 @property (nonatomic, strong) IBOutlet UITableView *listView;
+@property (nonatomic, strong) NSMutableArray *searchResults;
 
 @end

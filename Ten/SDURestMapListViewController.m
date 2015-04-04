@@ -15,6 +15,7 @@
 {
     SDURestMapListModel *_SDURestMapListModel;
     NSArray *_feedItems;
+    CLLocationManager *locationManager;
 }
 
 @end
@@ -27,14 +28,28 @@
 @synthesize listView = _listView;
 @synthesize tappedAnnotation = _tappedAnnotation;
 @synthesize mapView = _mapView;
-@synthesize flipButton = _flipButton;
+@synthesize mapButton = _mapButton;
+@synthesize listButton = _listButton;
 @synthesize displayingListView = _displayingListView;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.restaurants = [[NSMutableArray alloc]init];
-    self.annotations = [[NSMutableArray alloc]init];
+    
+    locationManager = [[CLLocationManager alloc] init];
+    
+    self.restaurants = [[NSMutableArray alloc] init];
+    self.annotations = [[NSMutableArray alloc] init];
+    
+    //Configure mapButton
+    self.mapButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Map Marker-26.png"] style:UIBarButtonItemStylePlain target:self action:@selector(flipBetweenViews:)];
+    [self.mapButton setTintColor:[UIColor whiteColor]];
+    
+    self.listButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Numbered List-32 (1).png"] style:UIBarButtonItemStylePlain target:self action:@selector(flipBetweenViews:)];
+    [self.listButton setTintColor:[UIColor whiteColor]];
+    
+    //Assign mapButton the right bar button item
+    [self.navigationItem setRightBarButtonItem:self.mapButton];
     
     // Create array object and assign it to _feedItems variable
     _feedItems = [[NSArray alloc] init];
@@ -83,13 +98,15 @@
     }
     [self.mapView addAnnotations:self.annotations];
     
+    SDURest *firstRest = [self.restaurants objectAtIndex:0];
+    
     //Center map and zoom in
     CLLocationCoordinate2D center;
-    center.latitude = (double) 40.727221;
-    center.longitude = (double) -73.99406899999997;
+    center.latitude = (double) firstRest.coordinates.latitude;
+    center.longitude = (double) firstRest.coordinates.longitude;
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(center, 3000, 3000);
     [self.mapView setRegion:region animated:YES];
-    
+
     // Reload the table view
     [self.listView reloadData];
 }
@@ -161,6 +178,32 @@
     }
 }
 
+#pragma mark - CLLocationManagerDelegate
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    NSLog(@"didFailWithError: %@", error);
+    UIAlertView *errorAlert = [[UIAlertView alloc]
+                               initWithTitle:@"Error" message:@"Failed to Get Your Location" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [errorAlert show];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+    NSLog(@"didUpdateToLocation: %@", newLocation);
+    CLLocation *currentLocation = newLocation;
+    
+    if (currentLocation != nil) {
+        
+        //self.mapView.centerCoordinate = currentLocation.coordinate;
+        MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(currentLocation.coordinate, 3000, 3000);
+        [self.mapView setCenterCoordinate:currentLocation.coordinate animated:NO];
+        NSLog(@"center coordinates:%f,%f", self.mapView.centerCoordinate.latitude, self.mapView.centerCoordinate.longitude);
+        //longitudeLabel.text = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.longitude];
+        //latitudeLabel.text = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.latitude];
+    }
+}
+
 #pragma mark - IBActions
 
 - (IBAction)flipBetweenViews:(id)sender
@@ -188,12 +231,24 @@
                         }
                     }];
     if (self.displayingListView) {
-        [self.flipButton setTitle:@"List"];
+        [self.navigationItem setRightBarButtonItem:self.listButton];
     }
     else
     {
-        [self.flipButton setTitle:@"Map"];
+        [self.navigationItem setRightBarButtonItem:self.mapButton];
     }
+}
+
+- (IBAction)centerMapOnUserButtonClicked:(id)sender {
+    locationManager.delegate = self;
+    locationManager.distanceFilter = kCLDistanceFilterNone;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+        [locationManager requestWhenInUseAuthorization];
+    
+    [locationManager startUpdatingLocation];
+    [locationManager stopUpdatingLocation];
 }
 
 @end

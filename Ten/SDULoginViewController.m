@@ -12,6 +12,10 @@
 #import "SDURestHomeViewController.h"
 
 @interface SDULoginViewController ()
+{
+    SDULoginModel *_SDULoginModel;
+    BOOL _isAlreadyUser;
+}
 
 -(void)toggleHiddenState:(BOOL)shouldHide;
 
@@ -19,7 +23,7 @@
 
 @implementation SDULoginViewController
 
-@synthesize profileImage = _profileImage;
+@synthesize profilePicture = _profilePicture;
 
 - (void)toggleHiddenState:(BOOL)shouldHide{
     self.lblUsername.hidden = shouldHide;
@@ -31,44 +35,20 @@
 {
     [super viewDidLoad];
     
-    //_profileImage = [[UIImage alloc]init];
+    _SDULoginModel = [[SDULoginModel alloc] init];
+    _isAlreadyUser = NULL;
     
-    //Customize login button
-    /*FBLoginView *loginview =
-    [[FBLoginView alloc] init];
-    
-    
-    loginview.frame = CGRectMake(0, 0, 271, 37);
-    for (id obj in loginview.subviews)
-    {
-        if ([obj isKindOfClass:[UIButton class]])
-        {
-            UIButton * loginButton =  obj;
-            UIImage *loginImage = [UIImage imageNamed:@"YourImg.png"];
-            [loginButton setBackgroundImage:loginImage forState:UIControlStateNormal];
-            [loginButton setBackgroundImage:nil forState:UIControlStateSelected];
-            [loginButton setBackgroundImage:nil forState:UIControlStateHighlighted];
-            [loginButton sizeToFit];
-        }
-        if ([obj isKindOfClass:[UILabel class]])
-        {
-            UILabel * loginLabel =  obj;
-            loginLabel.text = @"Log in to facebook";
-            loginLabel.textAlignment = NSTextAlignmentCenter;
-            loginLabel.frame = CGRectMake(0, 0, 271, 37);
-        }
-    }
-    
-    loginview.delegate = self;
-    
-    [self.view addSubview:loginview];
-    */
+    _SDULoginModel.delegate = self;
     
     self.loginButton.delegate = self;
     [self toggleHiddenState:YES];
     self.lblLoginStatus.text = @"";
-    self.loginButton.readPermissions = @[@"public_profile", @"email"];
+    self.loginButton.readPermissions = @[@"public_profile", @"email", @"user_friends"];
     
+}
+
+- (void)isAlreadyUser:(BOOL)isAlreadyUser{
+    _isAlreadyUser = isAlreadyUser;
 }
 
 -(void)loginViewShowingLoggedInUser:(FBLoginView *)loginView{
@@ -77,7 +57,6 @@
     [self toggleHiddenState:NO];
     
     SDURootViewController *rootController = [self.storyboard instantiateViewControllerWithIdentifier:@"rootController"];
-    rootController.profileImage = self.profileImage;
     [self presentViewController:rootController animated:NO completion:nil];
 }
 
@@ -89,19 +68,29 @@
 
 -(void)loginViewFetchedUserInfo:(FBLoginView *)loginView user:(id<FBGraphUser>)user{
     NSLog(@"%@", user);
+    SDUFacebookData *facebookData = [SDUFacebookData sharedFacebookData];
     self.profilePicture.profileID = user.objectID;
     self.lblUsername.text = user.name;
     self.lblEmail.text = [user objectForKey:@"email"];
     
-    /*
-    //this is not getting the right image
-    for (NSObject *obj in [_profilePicture subviews]) {
-        if ([obj isMemberOfClass:[UIImageView class]]) {
-            UIImageView *objImg = (UIImageView *)obj;
-            _profileImage = objImg.image;
-            break;
-        }
-    }*/
+    facebookData.user = user;
+    
+    [_SDULoginModel uploadFBData:user];
+    
+    /* make the API call */
+    [FBRequestConnection startWithGraphPath:@"/me/friends"
+                          completionHandler:^(
+                                              FBRequestConnection *connection,
+                                              id result,
+                                              NSError *error
+                                              ) {
+                              /* handle the result */
+                              NSDictionary *userData = (NSDictionary *)result;
+                              
+                          }];
+    
+    
+    
 }
 
 -(void)loginView:(FBLoginView *)loginView handleError:(NSError *)error{
@@ -122,6 +111,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 /*
 #pragma mark - Navigation

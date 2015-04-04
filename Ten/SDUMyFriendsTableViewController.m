@@ -17,7 +17,6 @@
 @implementation SDUMyFriendsTableViewController
 
 @synthesize myFriends = _myFriends;
-
 @synthesize searchResults = _searchResults;
 
 -(void)showMenu:(id)sender
@@ -74,12 +73,11 @@
 }
 
 #pragma mark - Table view data source
-/*
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController
 {
-    // Return the number of sections.
-    return 1;
-}*/
+    
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -118,7 +116,7 @@
     self.searchResults = [self.myFriends filteredArrayUsingPredicate:resultPredicate];
 }
 
--(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+-(BOOL)searchDisplayController:(UISearchController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
     [self filterContentForSearchText:searchString
                                scope:[[self.searchDisplayController.searchBar scopeButtonTitles]

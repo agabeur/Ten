@@ -20,11 +20,14 @@
 @end
 
 @implementation SDUMenuViewController
+@synthesize user = _user;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
- 
+
+    SDUFacebookData *facebookData = [SDUFacebookData sharedFacebookData];
+    self.user = facebookData.user;
     self.tableView.separatorColor = [UIColor colorWithRed:150/255.0f green:161/255.0f blue:177/255.0f alpha:1.0f];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -32,16 +35,16 @@
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.tableHeaderView = ({
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 184.0f)];
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 40, 100, 100)];
-        imageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-        imageView.image = [UIImage imageNamed:@"avatar.jpg"];
-        imageView.layer.masksToBounds = YES;
-        imageView.layer.cornerRadius = 50.0;
-        imageView.layer.borderColor = [UIColor whiteColor].CGColor;
-        imageView.layer.borderWidth = 3.0f;
-        imageView.layer.rasterizationScale = [UIScreen mainScreen].scale;
-        imageView.layer.shouldRasterize = YES;
-        imageView.clipsToBounds = YES;
+        FBProfilePictureView *profilePicture = [[FBProfilePictureView alloc] initWithFrame:CGRectMake(0, 40, 100, 100)];
+        profilePicture.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+        profilePicture.profileID = [self.user objectForKey:@"id"];
+        profilePicture.layer.masksToBounds = YES;
+        profilePicture.layer.cornerRadius = 50.0;
+        profilePicture.layer.borderColor = [UIColor whiteColor].CGColor;
+        profilePicture.layer.borderWidth = 3.0f;
+        profilePicture.layer.rasterizationScale = [UIScreen mainScreen].scale;
+        profilePicture.layer.shouldRasterize = YES;
+        profilePicture.clipsToBounds = YES;
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 150, 0, 24)];
         label.text = @"Ten";
@@ -51,7 +54,7 @@
         [label sizeToFit];
         label.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
         
-        [view addSubview:imageView];
+        [view addSubview:profilePicture];
         [view addSubview:label];
         view;
     });
@@ -112,7 +115,7 @@
         SDUMyListsHomeViewController *myListsHomeViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"myFriendsController"];
         navigationController.viewControllers = @[myListsHomeViewController];
     } else if (indexPath.section == 0 && indexPath.row == 4){
-        SDUMyListsHomeViewController *settingsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"settingsViewController"];
+        SDUSettingsViewController *settingsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"settingsViewController"];
         navigationController.viewControllers = @[settingsViewController];
     }
     
@@ -150,13 +153,9 @@
     }
     
     if (indexPath.section == 0) {
-        NSArray *titles = @[@"Restaurants", @"Bars", @"My Lists", @"Friends",@"Settings"];
-        cell.textLabel.text = titles[indexPath.row];
-    } /*else {
-        NSArray *titles = @[@"John Appleseed", @"John Doe", @"Test User"];
+        NSArray *titles = @[@"Restaurants", @"Bars", @"Me", @"Following",@"Settings"];
         cell.textLabel.text = titles[indexPath.row];
     }
-    */
     return cell;
 }
 

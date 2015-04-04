@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <FacebookSDK/FacebookSDK.h>
 #import "REFrostedViewController.h"
+#import "SDUFacebookData.h"
 
 @interface SDUMenuViewController : UITableViewController
+
+@property (weak, nonatomic) FBGraphObject *user;
 
 @end

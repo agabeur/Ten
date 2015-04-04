@@ -14,14 +14,10 @@
 
 @implementation SDURootViewController
 
-@synthesize profileImage = _profileImage;
-
 - (void)awakeFromNib
 {
     self.contentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"contentController"];
     self.menuViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"menuController"];
-    //self.menuViewController.image = self.profileImage;
-    //[self.menuViewController.view addSubview:image];
 }
 
 @end
