@@ -7,6 +7,7 @@
 //
 
 #import "SDUNavigationController.h"
+#import "UIImage+Tint.h"
 
 @interface SDUNavigationController ()
 
@@ -26,6 +27,17 @@
                                                             NSFontAttributeName: [UIFont fontWithName:@"Gill Sans" size:25.0f],
                                                             NSShadowAttributeName: shadow
                                                             }];
+    
+    // Set Back Button
+    UIImage *backBtn = [UIImage imageNamed:@"Left Filled-50.png"];
+    backBtn = [backBtn imageTintedWithColor:[UIColor whiteColor]];
+    backBtn = [backBtn imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    
+    UIEdgeInsets insets = UIEdgeInsetsMake(0, 0, 13, 0);
+    backBtn = [backBtn imageWithAlignmentRectInsets:insets];
+    [UINavigationBar appearance].backIndicatorImage = backBtn;
+    [UINavigationBar appearance].backIndicatorTransitionMaskImage = backBtn;
+
 }
 
 #pragma mark -

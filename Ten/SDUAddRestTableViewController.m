@@ -23,6 +23,7 @@
 
 @synthesize addressLabel = _addressLabel;
 @synthesize relevanceLabel = _relevanceLabel;
+@synthesize critiqueText = _critiqueText;
 @synthesize detailMapView = _detailMapView;
 @synthesize curRest = _curRest;
 @synthesize curAnnotation = _curAnnotation;
@@ -58,6 +59,9 @@
     
     //Initialize picker data
     _pickerData = @[@"Date", @"Friends", @"Parents", @"Kids", @"Work"];
+    
+    //Add placeholder in critiqueText UIPlaceHolderView
+    self.critiqueText.placeholderText = @"Enter your critique here";
 }
 
 - (void)viewWillAppear:(BOOL)animated

@@ -93,7 +93,7 @@
     // Ready to notify delegate that data is ready and pass back items
     if (self.delegate)
     {
-        [self.delegate isAlreadyUser:_isAlreadyUser];
+//        [self.delegate isAlreadyUser:_isAlreadyUser];
     }
 }
 

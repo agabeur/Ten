@@ -18,5 +18,6 @@
 @property (nonatomic) SDUItem *item;
 
 -(id) initWithItem:(SDUItem *)item;
+- (MKAnnotationView *) annotationView;
 
 @end

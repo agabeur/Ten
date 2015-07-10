@@ -11,11 +11,13 @@
 #import "SDURestListAnnotation.h"
 #import "SDURest.h"
 #import "SDUAddRestModel.h"
+#import "UIPlaceHolderTextView.h"
 
 @interface SDUAddRestTableViewController : UITableViewController<SDUAddRestModelProtocol, UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property (nonatomic, strong) IBOutlet UILabel *addressLabel;
 @property (nonatomic, strong) IBOutlet UILabel *relevanceLabel;
+@property (nonatomic, strong) IBOutlet UIPlaceHolderTextView *critiqueText;
 @property (nonatomic, strong) IBOutlet MKMapView *detailMapView;
 
 @property (nonatomic, strong) SDURest *curRest;

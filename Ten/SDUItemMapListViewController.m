@@ -41,14 +41,14 @@
     self.items = [[NSMutableArray alloc] init];
     self.annotations = [[NSMutableArray alloc] init];
     
-    //Configure mapButton
+    // Configure mapButton
     self.mapButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Map Marker-26.png"] style:UIBarButtonItemStylePlain target:self action:@selector(flipBetweenViews:)];
     [self.mapButton setTintColor:[UIColor whiteColor]];
     
-    self.listButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Numbered List-32 (1).png"] style:UIBarButtonItemStylePlain target:self action:@selector(flipBetweenViews:)];
+    self.listButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"List-32.png"] style:UIBarButtonItemStylePlain target:self action:@selector(flipBetweenViews:)];
     [self.listButton setTintColor:[UIColor whiteColor]];
     
-    //Assign mapButton the right bar button item
+    // Assign mapButton the right bar button item
     [self.navigationItem setRightBarButtonItem:self.mapButton];
     
     // Create array object and assign it to _feedItems variable
@@ -60,14 +60,17 @@
     // Set this view controller object as the delegate for the home model object
     _SDUItemMapListModel.delegate = self;
     
-    //URL encode the mood
+    // URL encode the mood
     NSString *URLMood = [_mood urlEncodeUsingEncoding:NSUTF8StringEncoding];
     
     // Call the download items method of the home model object
     [_SDUItemMapListModel downloadItems:URLMood];
     
-    //Boolean to flip between list and map views
+    // Boolean to flip between list and map views
     self.displayingListView = YES;
+    
+    // Set back button title
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -100,7 +103,7 @@
     
     SDUItem *firstItem = [self.items objectAtIndex:0];
     
-    //Center map and zoom in
+    // Center map and zoom in
     CLLocationCoordinate2D center;
     center.latitude = (double) firstItem.coordinates.latitude;
     center.longitude = (double) firstItem.coordinates.longitude;
@@ -125,7 +128,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"ItemCell";
+    static NSString *CellIdentifier = @"RestCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     SDUItem *currentItem = [self.items objectAtIndex:indexPath.row];
@@ -139,39 +142,37 @@
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id)annotation
 {
-    if([annotation isKindOfClass:[MKUserLocation class]])
-        return nil;
     
-    static NSString *identifier = @"myAnnotation";
-    MKPinAnnotationView * annotationView = (MKPinAnnotationView*)[self.mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
-    if (!annotationView)
+    if([annotation isKindOfClass:[SDUItemListAnnotation class]])
     {
-        annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
-        annotationView.pinColor = MKPinAnnotationColorPurple;
-        annotationView.animatesDrop = YES;
-        annotationView.canShowCallout = YES;
-    }else {
-        annotationView.annotation = annotation;
+        SDUItemListAnnotation *myLocation = (SDUItemListAnnotation *)annotation;
+        MKAnnotationView *newAnnotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:@"ItemAnnotation"];
+        
+        if (newAnnotationView==nil)
+            newAnnotationView = myLocation.annotationView;
+        else
+            newAnnotationView.annotation = annotation;
+        return newAnnotationView;
     }
-    annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-    return annotationView;
+    else
+        return nil;
 }
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
     
     self.tappedAnnotation = (SDUItemListAnnotation *)view.annotation;
-    [self performSegueWithIdentifier:@"ItemDetailSegue2" sender:self];
+    [self performSegueWithIdentifier:@"RestDetailSegue2" sender:self];
 }
 
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"ItemDetailSegue"]) {
+    if ([segue.identifier isEqualToString:@"RestDetailSegue"]) {
         SDUItemDetailTableViewController *itemDetailViewController = segue.destinationViewController;
         itemDetailViewController.curItem = [self.items objectAtIndex:self.listView.indexPathForSelectedRow.row];
         
-    }else if ([segue.identifier isEqualToString:@"ItemDetailSegue2"]) {
+    }else if ([segue.identifier isEqualToString:@"RestDetailSegue2"]) {
         SDUItemDetailTableViewController *itemDetailViewController = segue.destinationViewController;
         itemDetailViewController.curAnnotation = self.tappedAnnotation;
         itemDetailViewController.curItem = itemDetailViewController.curAnnotation.item;

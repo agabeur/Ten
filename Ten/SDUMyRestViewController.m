@@ -32,7 +32,7 @@
     [super viewWillAppear:animated];
     
     _isSearching = false;
-    [self.tableView reloadData];
+    //[self.tableView reloadData];
     
     self.restaurants = [[NSMutableArray alloc]init];
     _feedItems = [[NSArray alloc]init];
@@ -45,6 +45,7 @@
     _SDUSearchRestModel.delegate = self;
     
     [_SDUMyRestModel downloadMyRestaurants];
+    [self.tableView reloadData];
 }
 
 - (void)viewDidLoad

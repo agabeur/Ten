@@ -14,6 +14,7 @@
 @end
 
 @implementation SDUSettingsViewController
+
 @synthesize profilePicture = _profilePicture;
 @synthesize name = _name;
 @synthesize user = _user;
